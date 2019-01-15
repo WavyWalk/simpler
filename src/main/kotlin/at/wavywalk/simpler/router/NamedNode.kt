@@ -18,3 +18,4 @@ class NamedNode(name: String): INode {
     override val namedChildren = NamedNodesContainer()
     override val wildChildren = WildNodesContainer()
 }
+

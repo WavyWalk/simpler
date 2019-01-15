@@ -74,54 +74,54 @@ use gretty or simpler-embedded-jetty (separate repo, create main.kt and run it f
 Routing will look familiar to you, all you can use example is below:
 as said it supports named arguments and wild cards. It doesn't use regex, so it should be fast (it implements sort of Radix Tree)
 ```kotlin
-object RoutesConfig: RoutesDrawer(Router) {  
-    override fun run() {  
+object RoutesConfig: RoutesDrawer(Router) {
+    override fun run() {
         namespace("/api") {  // route namespaces
-		    namespace("/user") {  // namespaces in namespaces
-			    get("/:id") { //named route parameters
-				    //yielded `it` is a context wrapper
-				    UserController(it).show()  //calling a controller inheriting from BaseController
-                }  
-			    namespace("/:userId/account") {  // named route parameters in namespaces
-				    get("/:accountId") {  
-					    AccountOfUserController(it).show()  
-                    }  
-			    }  
-			    get("") {  
-				    UserController(it).index()  
-                }  
-				put("/:id") {  // all rest terms
-				    UserController(it).update()  
-                }   
-			    post("") {  
-				    UserController(it).create()  
-                }  
-				delete("/:id") {  
-				    UserController(it).delete()  
-                }  
-				get("/:id/hello") {  
-				    UserController(it).sayhi()  
-                }  
-		    } 
-	    }  
-	    get("/public/*") {  //catch all routes. you can add routes after it and it will resolve correectly. eg. \/* will not consume \/*/hello/:id
-		    ToDefaultServletForwarder().forward(it) //forward servlet request to containers default servlet (e.g. for file serving) // just example implied that you'd just use stuff like nginx for that   
-        }  
-	    get("/favicon.ico") {  
-		    PrimitiveFileServer().serveFile(it) // just for dev purposes serve a file  
-        }  
-	    get("/*") {  
-		    BaseController(it).renderTemplate("index.ftl", mutableMapOf())  // render template
+            namespace("/user") {  // namespaces in namespaces
+                get("/:id") { //named route parameters
+                    //yielded `it` is a context wrapper
+                    UserController(it).show()  //calling a controller inheriting from BaseController
+                }
+                namespace("/:userId/account") {  // named route parameters in namespaces
+                    get("/:accountId") {
+                        AccountOfUserController(it).show()
+                    }
+                }
+                get("") {
+                    UserController(it).index()
+                }
+                put("/:id") {  // all rest terms
+                    UserController(it).update()
+                }
+                post("") {
+                    UserController(it).create()
+                }
+                delete("/:id") {
+                    UserController(it).delete()
+                }
+                get("/:id/hello") {
+                    UserController(it).sayhi()
+                }
+            }
+        }
+        get("/public/*") {  //catch all routes. you can add routes after it and it will resolve correectly. eg. \/* will not consume \/*/hello/:id
+            ToDefaultServletForwarder().forward(it) //forward servlet request to containers default servlet (e.g. for file serving) // just example implied that you'd just use stuff like nginx for that   
+        }
+        get("/favicon.ico") {
+            PrimitiveFileServer().serveFile(it) // just for dev purposes serve a file  
         }
         get("/*") {
-			BaseController(it).requestParams().get("user")?.get("name")?.string //process a form without implementing a controller
-		}  
-   	    get("/getMeAstandartRequestResponse") {  //access standart request objects
-			it.request.requestURI  
-			it.response.writer.print(it.request.requestURI)  
-			it.response.writer.close()
-	    }  
-    }  
+            BaseController(it).renderTemplate("index.ftl", mutableMapOf())  // render template
+        }
+        get("/*") {
+            BaseController(it).requestParams().get("user")?.get("name")?.string //process a form without implementing a controller
+        }
+        get("/getMeAstandartRequestResponse") {  //access standart request objects
+            it.request.requestURI
+            it.response.writer.print(it.request.requestURI)
+            it.response.writer.close()
+        }
+    }
 }
 ```
 # Controllers <a name="controllers"></a>
