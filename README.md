@@ -36,12 +36,12 @@ for embedded server there's simpler-embedded jetty
 # How do I start? <a name="installation"></a>
 it's not on the repo engines, so just clone it in your project PARENT folder.
 in your project's settings.graddle add:
-```
+```groovy
 include ':simpler'  
 project(':simpler').projectDir = new File(settingsDir, "../simpler")
 ```
 in build.graddle:
-```
+```groovy
 compile project(':simpler')
 ```
 # Setup: <a name="setup"></a>
@@ -144,7 +144,7 @@ On of the best things simpler has - a convenient wrapper for your request params
 be it a encoded form or a json it just get's what you need, without boilerplate. For forms it uses the hash format e.g. user[account][phone]  in html form. So you just treat forms like map/list objects.
 just call `requestParams()`, and it will parse the encoded form (including uploaded file) or a Json (depending on content type), and you just get a unified access to it.
 for example you get a post request of:
-```
+```yaml
 user:
     name: joe
     id: 10
@@ -159,7 +159,7 @@ user:
 ```
 it may come as a encoded form (user[name]="joe", user[friends][0][name]="foo" and etc.) or as a json:
 and you just simply use your request params without writing parsers or anything (well you can if you want to):
-```
+```kotlin
 requestParams().get("user")?.get("joe").string
 requestParams().get("user")?.get("id").long
 requestParams().get("user")?.get("friends")?.paramList()?.first()?.get("name")?.string
