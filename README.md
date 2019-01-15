@@ -20,6 +20,7 @@ This lib is a hobby propgrammer's approach to writing a Kotlin based web apps.
 [request parsing](#requestparsing)
 
 
+for a simpler orm go to [simpler-orm repo](https://github.com/WavyWalk/simpler-orm)
 
 # What it provides <a name="description"></a>
 
@@ -30,9 +31,9 @@ This lib is a hobby propgrammer's approach to writing a Kotlin based web apps.
 * non obtrusive non opinionated. Do what you want, EE provides you with just alright stuff.
 # Dependencies <a name="dependencies"></a>
 Most of the stuff is coded against an interface and you can write your own adapters.
-for Json parameters wrapper there is simpler-jacksonadapter
-for Freemarker there is simpler-freemarker-adapter
-for embedded server there's simpler-embedded jetty
+for Json parameters wrapper there is [simpler-jacksonadapter](https://github.com/WavyWalk/simpler-jackson-adapter)
+for Freemarker there is [simpler-freemarker-adapter](https://github.com/WavyWalk/simpler-freemarker-adapter)
+for embedded server there's [simpler-embedded jetty](https://github.com/WavyWalk/simpler-embedded-jetty)
 # How do I start? <a name="installation"></a>
 it's not on the repo engines, so just clone it in your project PARENT folder.
 in your project's settings.graddle add:
@@ -51,10 +52,10 @@ compile project(':simpler')
  ```kotlin
 SimplerDependencyManager.provider = SimplerDependenciesProvider(  
     servletRequestParametersWrapper = ServletRequestParametersWrapper(  
-        jsonParametersParser = JacksonParametersParser(ObjectMapper()) // adapter separate repo 
+        jsonParametersParser = JacksonParametersParser(ObjectMapper()) // [simpler-jacksonadapter](https://github.com/WavyWalk/simpler-jackson-adapter)
     ),  
     assetsPathProvider = AssetsPathProvider(PublicFolderConfig()), // default is /src/main/webapp/public.  
-    templateProcessor = FreemarkerTemplateProcessor(configuration) //an only one adapter in separate repo  
+    templateProcessor = FreemarkerTemplateProcessor(configuration) //an only one fro now adapter [simpler-freemarker-adapter](https://github.com/WavyWalk/simpler-freemarker-adapter) 
 )
 ```
 *  Configure routing:
@@ -170,5 +171,6 @@ to limit max file body call requestParams(maxContentLenght: Long). Encoded form 
 
 that's basically it
 
+# Licensing
 All code written by me in this repo is under MIT or WTFPL licenses, whatever you wish.
-For dependencies, see their licenses.
+For dependencies, see their respective licenses.
