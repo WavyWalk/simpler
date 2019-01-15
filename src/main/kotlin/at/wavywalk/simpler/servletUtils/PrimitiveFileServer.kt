@@ -1,12 +1,14 @@
 package at.wavywalk.simpler.servletUtils
 
+import at.wavywalk.simpler.assetsmanagement.PublicFolderConfig
+import at.wavywalk.simpler.dependencymanagement.SimplerDependencyManager
 import at.wavywalk.simpler.router.SimplerServletRequestContext
 import java.io.File
 import java.io.FileInputStream
 import java.net.URI
 
 class PrimitiveFileServer(
-        val rootPathOfServedFile: String
+        val rootPathOfServedFile: String = SimplerDependencyManager.provider.assetsPathProvider.publicFolderConfig.pathToPublicDir!!
 ) {
 
     fun serveFile(context: SimplerServletRequestContext) {

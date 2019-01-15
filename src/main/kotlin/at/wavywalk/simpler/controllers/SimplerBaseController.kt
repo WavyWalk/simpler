@@ -6,9 +6,11 @@ import at.wavywalk.simpler.utils.requestparameters.IParam
 import java.io.PrintWriter
 import java.io.StringWriter
 
-open class BaseController(
+open class SimplerBaseController(
        val context: SimplerServletRequestContext
 ) {
+
+
     fun requestParams(maxContentLength: Long? = null): IParam {
         return SimplerDependencyManager.provider.servletRequestParametersWrapper.createTree(context.request, maxContentLength)
     }
