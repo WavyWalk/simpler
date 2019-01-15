@@ -145,17 +145,17 @@ be it a encoded form or a json it just get's what you need, without boilerplate.
 just call `requestParams()`, and it will parse the encoded form (including uploaded file) or a Json (depending on content type), and you just get a unified access to it.
 for example you get a post request of:
 ```
-	user:
-		name: joe
-		id: 10
-		friends:
-			- user:
-				name: foo
-				id: 10
-			- user:
-				name: bar
-		avatar:
-			file: an uploaded file
+user:
+    name: joe
+    id: 10
+    friends:
+        - user:
+        name: foo
+        id: 10
+        - user:
+        name: bar
+    avatar:
+        file: an uploaded file
 ```
 it may come as a encoded form (user[name]="joe", user[friends][0][name]="foo" and etc.) or as a json:
 and you just simply use your request params without writing parsers or anything (well you can if you want to):
