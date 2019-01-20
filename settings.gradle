@@ -1,4 +1,4 @@
 rootProject.name = 'simpler'
 
-include(':simpler-configurator')
-project(':simpler-configurator').projectDir = new File('/home/wavywalk/dev/jvm_projects/simpler-configurator')
+//include(':simpler-configurator')
+//project(':simpler-configurator').projectDir = new File('/home/wavywalk/dev/jvm_projects/simpler-configurator')

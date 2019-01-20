@@ -1,9 +1,9 @@
 package at.wavywalk.simpler.assetsmanagement
 
-import at.wavywalk.simplerconfigurator.anotations.ConfigurationProperty
+import at.wavywalk.simpler.configurator.anotations.ConfigurationProperty
 import kotlin.reflect.KProperty
 
-//TODO: refactor to use special data class
+
 class PublicFolderConfig {
 
     @ConfigurationProperty
