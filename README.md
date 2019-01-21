@@ -35,15 +35,20 @@ for Json parameters wrapper there is [simpler-jacksonadapter](https://github.com
 for Freemarker there is [simpler-freemarker-adapter](https://github.com/WavyWalk/simpler-freemarker-adapter)
 for embedded server there's [simpler-embedded jetty](https://github.com/WavyWalk/simpler-embedded-jetty)
 # How do I start? <a name="installation"></a>
-it's not on the repo engines, so just clone it in your project PARENT folder.
-in your project's settings.graddle add:
-```groovy
-include ':simpler'  
-project(':simpler').projectDir = new File(settingsDir, "../simpler")
-```
-in build.graddle:
-```groovy
-compile project(':simpler')
+```kotlin
+//build.gradle
+repositories {
+    mavenCentral()
+    maven {
+        url  "https://dl.bintray.com/wavywalk/maven" //add this repo
+    }
+}
+
+dependencies {
+    compile 'at.wavywalk.simpler:simpler:0.1.0:sources'
+    compile 'at.wavywalk.simpler:simpler:0.1.0'
+}
+
 ```
 # Setup: <a name="setup"></a>
 * create your bootstrapper class and inherits from `SimplerApplicationBootstrapper`. Annotate your bootstrapper with `@WebListener`
