@@ -1,9 +1,4 @@
 # Simpler
-When I jumped into JVM (web dev side) world after things like Rails and stuff, one thought just bogged me all the time: 
-* why the hell is it so complicated?
-* why there is no stuff like Sinatra (and if there are they are so tightly coupled with other complicated stuff)?
-* why to access passed parameters or form I have to write a 100 line class?
-This lib is a hobby propgrammer's approach to writing a Kotlin based web apps.
 
  [what it provides](#description)
  
